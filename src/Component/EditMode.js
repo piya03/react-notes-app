@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../App.css";
 
-function EditMode({ setShowEdit }) {
+function EditMode({ setShowEdit, each }) {
   const [showEditDel, setShowEditDel] = useState(false);
   console.log("EditMode -> showEditDel", showEditDel);
   return (
     <div className="editModeContainer">
-      <p> you can also edit this one</p>
+      <p> {each.name}</p>
       <div
         className="threedot"
         onClick={() => {
@@ -14,11 +14,10 @@ function EditMode({ setShowEdit }) {
           setShowEditDel(!showEditDel);
         }}
       >
-        {" "}
         <span>...</span>
         {showEditDel && (
           <div className="insideDot">
-            <div>Edit</div>
+            <div style={{ marginBottom: "5px" }}>Edit</div>
             <div>Delete</div>
           </div>
         )}
