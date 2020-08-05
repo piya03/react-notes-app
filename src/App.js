@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <h2>Write Notes</h2>
       <Notes onlyWrite />
-      <Notes />
+      {/* <Notes /> */}
     </div>
   );
 }

@@ -3,16 +3,21 @@ import "../App.css";
 import CommonButton from "./CommonButton";
 import EditMode from "./EditMode";
 
+// App
+//   > <H1></H1>
+//   > Note writeonly
+//   > NotesList
+//       > loop the data and render Notes
+//       >Note
+//       >Note
+//       >Note
+//       >Note
 function Notes({ onlyWrite }) {
   const [showEdit, setShowEdit] = useState(false);
   const [textVal, setTextVal] = useState("");
   console.log("Notes -> textVal", textVal);
   console.log("Notes -> showEdit", showEdit);
-  const [data, setData] = useState([
-    { name: "priyanka" },
-    { name: "Anil" },
-    { name: "Sudhir" },
-  ]);
+  const [data, setData] = useState([{}]);
   console.log("Notes -> data", data);
 
   return (
@@ -38,8 +43,14 @@ function Notes({ onlyWrite }) {
                 marginRight: "10px",
               }}
               onClick={() => {
-                console.log("send here");
-                data.unshift({ name: textVal });
+                if (textVal) {
+                  data.unshift({
+                    name: textVal,
+                    id: Math.random(),
+                  });
+                  setData([...data]);
+                  setTextVal("");
+                }
               }}
             />
             <CommonButton
@@ -47,14 +58,23 @@ function Notes({ onlyWrite }) {
               styleit={{
                 background: "#fd4f60",
               }}
+              onClick={() => {
+                setTextVal("");
+              }}
             />
           </div>
         </div>
       )}
-      {!onlyWrite &&
-        data.map((each, index) => {
-          return <EditMode setShowEdit={setShowEdit} each={each} />;
-        })}
+      {data.map((each, index) => {
+        return (
+          <EditMode
+            key={each.id}
+            setShowEdit={setShowEdit}
+            each={each}
+            onlyWrite={false}
+          />
+        );
+      })}
     </div>
   );
 }
