@@ -3,7 +3,8 @@ import CommonButton from "./CommonButton";
 
 import "../App.css";
 
-function EditMode() {
+function EditMode({ each, textVal, setTextVal, data, setData, onlyWrite }) {
+  const [text, setText] = useState(each?.name);
   const [showEditDel, setShowEditDel] = useState(false);
   const [toggle, setToggle] = useState(false);
   console.log("EditMode -> toggle", toggle);
@@ -11,13 +12,13 @@ function EditMode() {
     <React.Fragment>
       {/* ////// */}
 
-      {toggle && (
+      {(toggle || onlyWrite) && (
         <div style={{ marginTop: "15px" }}>
           <div className="container">
             <textarea
-              // value={textVal}
+              value={text}
               onChange={(e) => {
-                // setTextVal(e.target.value);
+                setText(e.target.value);
               }}
               className="textarea"
               cols="30"
@@ -33,8 +34,13 @@ function EditMode() {
               }}
               onClick={() => {
                 setToggle(false);
+                setData([
+                  ...data,
+                  { name: text, id: Math.random().toString() },
+                ]);
               }}
             />
+
             <CommonButton
               value="Cancel"
               styleit={{
@@ -45,9 +51,9 @@ function EditMode() {
         </div>
       )}
       {/* /////////// */}
-      {!toggle && (
+      {!toggle && !onlyWrite && (
         <div className="editModeContainer">
-          <p> fg</p>
+          <p>{each.name}</p>
           <div
             className="threedot"
             onClick={() => {

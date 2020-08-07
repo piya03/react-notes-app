@@ -12,10 +12,7 @@ import EditMode from "./EditMode";
 //       >Note
 //       >Note
 //       >Note
-function Notes({ onlyWrite }) {
-  const [textVal, setTextVal] = useState("");
-  const [data, setData] = useState([{}]);
-
+function Notes({ textVal, setTextVal, data, setData }) {
   return (
     <div className="">
       <div>
