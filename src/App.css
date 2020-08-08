@@ -17,6 +17,7 @@
   padding: 10px;
   font-size: 16px;
   width: 100%;
+  font-family: sans-serif;
 }
 .btn{
   border: none;
@@ -64,5 +65,31 @@
   text-align: left;
   padding: 10px 25px 10px 10px;
   z-index: 1;
+  box-shadow: 0px 0px 3px #cac3c3;
+  border-radius: 4px;
+  width: 70px;
 
 }
+.deleteBtn:hover{
+  color: #b60a0a;
+  font-weight: 600;
+}
+.editBtn{
+margin-bottom: 5px;
+}
+.editBtn:hover{
+  font-weight: 600;
+  color: #00acb8;
+}
+.personIcon {
+
+  color: #00acb8;
+  background: #dce9f7;
+  border-radius: 50%;
+  height: 25px;
+  width: 30px;
+  font-size: 20px;
+  margin-right:8px;
+}
+
+

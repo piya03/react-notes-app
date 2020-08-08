@@ -3,19 +3,17 @@ import "./App.css";
 //import Notes from "./Component/Notes";
 import EditMode from "./Component/EditMode";
 function App() {
-  const [textVal, setTextVal] = useState("");
-
-  const [data, setData] = useState([
-    { name: "priynka", id: "1" },
-    { name: "Anil", id: "2" },
-    { name: "priya", id: "3" },
-  ]);
+  const [data, setData] = useState([]);
+  function addNotes(textValue) {
+    console.log("addNotes -> addNotes");
+    setData([...data, { name: textValue, id: Math.random() }]);
+  }
   console.log("App -> data", data);
   return (
     <div className="App">
       <h2>Write Notes</h2>
 
-      <EditMode onlyWrite />
+      <EditMode onlyWrite addNotes={addNotes} />
       {data.map((each, index) => {
         return (
           <EditMode
@@ -24,8 +22,6 @@ function App() {
             data={data}
             setData={setData}
             onlyWrite={false}
-            textVal={textVal}
-            setTextVal={setTextVal}
           />
         );
       })}

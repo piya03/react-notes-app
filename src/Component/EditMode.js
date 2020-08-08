@@ -3,8 +3,10 @@ import CommonButton from "./CommonButton";
 
 import "../App.css";
 
-function EditMode({ each, textVal, setTextVal, data, setData, onlyWrite }) {
-  const [text, setText] = useState(each?.name);
+function EditMode({ each, data, setData, onlyWrite, addNotes }) {
+  //const [text, setText] = useState(each?.name);
+  const [textVal, setTextVal] = useState("");
+
   const [showEditDel, setShowEditDel] = useState(false);
   const [toggle, setToggle] = useState(false);
   console.log("EditMode -> toggle", toggle);
@@ -15,10 +17,13 @@ function EditMode({ each, textVal, setTextVal, data, setData, onlyWrite }) {
       {(toggle || onlyWrite) && (
         <div style={{ marginTop: "15px" }}>
           <div className="container">
+            <span className="personIcon">
+              <i class="fa fa-user"></i>
+            </span>
             <textarea
-              value={text}
+              value={textVal}
               onChange={(e) => {
-                setText(e.target.value);
+                setTextVal(e.target.value);
               }}
               className="textarea"
               cols="30"
@@ -34,10 +39,10 @@ function EditMode({ each, textVal, setTextVal, data, setData, onlyWrite }) {
               }}
               onClick={() => {
                 setToggle(false);
-                setData([
-                  ...data,
-                  { name: text, id: Math.random().toString() },
-                ]);
+                if (textVal) {
+                  addNotes(textVal);
+                }
+                setTextVal("");
               }}
             />
 
@@ -63,13 +68,18 @@ function EditMode({ each, textVal, setTextVal, data, setData, onlyWrite }) {
             <span>...</span>
             {showEditDel && (
               <div className="insideDot">
-                <div
-                  onClick={() => setToggle(!toggle)}
-                  style={{ marginBottom: "5px" }}
-                >
+                <div className="editBtn" onClick={() => setToggle(!toggle)}>
+                  <span style={{ paddingRight: "10px" }}>
+                    <i class="fa fa-edit"></i>
+                  </span>
                   Edit
                 </div>
-                <div>Delete</div>
+                <div className="deleteBtn">
+                  <span style={{ paddingRight: "10px" }}>
+                    <i class="fa fa-trash"></i>
+                  </span>
+                  Delete
+                </div>
               </div>
             )}
           </div>
