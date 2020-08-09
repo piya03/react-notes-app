@@ -8,6 +8,18 @@ function App() {
     console.log("addNotes -> addNotes");
     setData([...data, { name: textValue, id: Math.random() }]);
   }
+
+  function deleteFun(index) {
+    console.log("deleteFun -> index", index);
+    data.splice(index, 1);
+    setData([...data]);
+  }
+
+  function updateFun(textValue, index) {
+    console.log("updateFun -> updateFun");
+    data[index] = { ...data[index], name: textValue };
+    setData([...data]);
+  }
   console.log("App -> data", data);
   return (
     <div className="App">
@@ -17,10 +29,13 @@ function App() {
       {data.map((each, index) => {
         return (
           <EditMode
+            index={index}
             key={index}
             each={each}
             data={data}
             setData={setData}
+            deleteFun={deleteFun}
+            updateFun={updateFun}
             onlyWrite={false}
           />
         );
