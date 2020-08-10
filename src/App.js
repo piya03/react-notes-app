@@ -4,6 +4,7 @@ import "./App.css";
 import EditMode from "./Component/EditMode";
 function App() {
   const [data, setData] = useState([]);
+
   function addNotes(textValue) {
     console.log("addNotes -> addNotes");
     setData([...data, { name: textValue, id: Math.random() }]);
