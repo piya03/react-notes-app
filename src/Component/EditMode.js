@@ -13,14 +13,10 @@ function EditMode({
   updateFun,
   index,
 }) {
-  console.log("index", index);
-  //const [text, setText] = useState(each?.name);
   const [textVal, setTextVal] = useState(each?.name || "");
-  console.log("EditMode -> textVal", textVal);
 
   const [showEditDel, setShowEditDel] = useState(false);
   const [toggle, setToggle] = useState(false);
-  console.log("EditMode -> toggle", toggle);
   return (
     <React.Fragment>
       {/* ////// */}

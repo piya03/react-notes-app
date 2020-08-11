@@ -6,18 +6,15 @@ function App() {
   const [data, setData] = useState([]);
 
   function addNotes(textValue) {
-    console.log("addNotes -> addNotes");
     setData([...data, { name: textValue, id: Math.random() }]);
   }
 
   function deleteFun(index) {
-    console.log("deleteFun -> index", index);
     data.splice(index, 1);
     setData([...data]);
   }
 
   function updateFun(textValue, index) {
-    console.log("updateFun -> updateFun");
     data[index] = { ...data[index], name: textValue };
     setData([...data]);
   }
