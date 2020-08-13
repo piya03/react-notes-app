@@ -14,6 +14,8 @@ function EditMode({
   index,
 }) {
   const [textVal, setTextVal] = useState(each?.name || "");
+  console.log("textVal", textVal);
+  console.log("each", each);
 
   const [showEditDel, setShowEditDel] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -43,16 +45,19 @@ function EditMode({
               styleit={{
                 background: "#00acb8",
                 marginRight: "10px",
+                border: "none",
               }}
               onClick={() => {
                 setToggle(false);
                 if (textVal && onlyWrite) {
                   addNotes(textVal);
+
                   // setData([...data, { name: textVal, id: Math.random() }]);
                 }
                 setTextVal("");
                 if (!onlyWrite) {
                   updateFun(textVal, index);
+                  //setData([...data, { name: textValue, id: Math.random() }]);
                 }
               }}
             />
@@ -62,6 +67,7 @@ function EditMode({
               value="Cancel"
               styleit={{
                 background: "#fd4f60",
+                border: "none",
               }}
             />
           </div>

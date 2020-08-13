@@ -16,8 +16,13 @@ function App() {
 
   function updateFun(textValue, index) {
     data[index] = { ...data[index], name: textValue };
+    console.log("updateFun -> data checking before", data);
+    console.log("updateFun -> data[index]", data[index]);
+
     setData([...data]);
+    console.log("updateFun -> data checking after", data);
   }
+
   console.log("App -> data", data);
   return (
     <div className="App">
