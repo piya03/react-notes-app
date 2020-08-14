@@ -14,6 +14,7 @@ function EditMode({
   index,
 }) {
   const [textVal, setTextVal] = useState(each?.name || "");
+
   console.log("textVal", textVal);
   console.log("each", each);
 
@@ -51,13 +52,12 @@ function EditMode({
                 setToggle(false);
                 if (textVal && onlyWrite) {
                   addNotes(textVal);
-
+                  setTextVal("");
                   // setData([...data, { name: textVal, id: Math.random() }]);
                 }
-                setTextVal("");
+                // setTextVal("");
                 if (!onlyWrite) {
                   updateFun(textVal, index);
-                  //setData([...data, { name: textValue, id: Math.random() }]);
                 }
               }}
             />
@@ -75,7 +75,14 @@ function EditMode({
       )}
       {/* /////////// */}
       {!toggle && !onlyWrite && (
-        <div className="editModeContainer">
+        <div
+          className="editModeContainer"
+          onClick={() => {
+            if (showEditDel) {
+              setShowEditDel(false);
+            }
+          }}
+        >
           <div className="iconBox">
             <span className="personIcon">
               <i className="fa fa-user"></i>

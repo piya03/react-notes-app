@@ -1,12 +1,16 @@
+body{
+  background: aliceblue;
+}
 .App{
       text-align: center;
-      background: aliceblue;
+      background: white;
       max-width: 500px;
       margin: auto;
       padding: 20px 10px;
       box-shadow: 0px 0px 5px #c4bfbf;
       border-radius: 5px;
       margin-top: 10px;
+      height: 600px;
 }
 
 .container{
@@ -21,7 +25,6 @@
   font-size: 16px;
   width: 100%;
   font-family: sans-serif; 
-  
   border-radius: 7px;
 }
 .btn{
@@ -63,7 +66,7 @@
 .insideDot{
   position: absolute;
   background: white;
-  left: -40px;
+  right: 0px;
   padding: 5px 10px 5px 5px;
   font-size: 14px;
   font-weight: 500;
@@ -100,4 +103,8 @@ margin-bottom: 5px;
 .iconBox{
   display: flex;
   align-items: center;
+}
+.overflowContainer{
+  height: 400px;
+  overflow: auto;
 }
